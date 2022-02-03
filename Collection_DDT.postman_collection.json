@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "18b2f39a-809e-4567-821e-c5baed5e5d06",
+		"name": "Collection_DDT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LIST_DDT",
+			"item": [
+				{
+					"name": "LIST_USER_LOCALHOST_DDT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Verify FirstName\"] = responseBody.has(data.FirstName);\r",
+									"tests[\"Verify LasrtName\"] = responseBody.has(data.LastName);\r",
+									"tests[\"Verify SubjectId\"] = responseBody.has(data.SubjectId);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FirstName\": \"{{FirstName}}\",\r\n    \"LastName\": \"{{LastName}}\",\r\n    \"SubjectId\": {{SubjectId}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
